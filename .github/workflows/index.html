@@ -1,20 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eunoia Health Store</title>
-</head>
-<body>
-    <header>
-        <h1>Welcome to Eunoia Health Store</h1>
-    </header>
-    <main>
-        <p>This is a test page to verify that Cloudflare Pages is working correctly with your domain.</p>
-        <p>If you see this, congratulations! Your site setup is successful.</p>
-    </main>
-    <footer>
-        <p>© 2023 Eunoia Health. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main  # Replace with your default branch name if different
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Updated to Node.js 20
+
+      - name: Clear npm cache
+        run: npm cache clean --force
+
+      - name: Install Dependencies
+        run: npm install --production=false
+
+      - name: Build
+        run: |
+          # Adjust the build command if needed
+          # For static sites without build command: 
+          #   echo "No build needed"
+          # For Next.js with static export:
+          npm run build && npm run export
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: your-project-name  # Replace with your project name on Cloudflare Pages
+          directory: ./out  # Directory where your built files are, adjust as necessary
