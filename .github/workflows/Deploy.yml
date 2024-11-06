@@ -25,5 +25,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: 35a5e3745dc2f98bf40880c92d0a7e4d
+          projectName: eunoiahealth-store
           directory: .
