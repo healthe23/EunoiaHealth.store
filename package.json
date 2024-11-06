@@ -11,6 +11,3 @@
   "author": "",
   "license": "ISC"
 }
-git add package.json
-git commit -m "Update test script in package.json"
-git push origin main  # or whatever your default branch is
