@@ -3,25 +3,30 @@ name: Eunoiahealth.store
 on:
   push:
     branches:
-      - main  # This assumes you deploy from the main branch, adjust as needed
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository  # Checks out your repository under $GITHUB_WORKSPACE
-        uses: actions/checkout@v4  # Changed to v4 for compatibility with Node.js 20
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Install Dependencies  # If your project uses any dependencies
-        run: npm ci  # Uses npm ci for clean install
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: Build  # If you have a build step
-        run: npm run build  # Or whatever your build command is
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1  # Check for updates to this version
+        uses: cloudflare/pages-action@1
         with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}  # Replace with your actual secret name if different
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}  # Replace with your actual secret name if different
-          projectName: your-project-name  # Replace with your Cloudflare Pages project name
-          directory: ./  # Replace with the path to your built files if not root
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: eunoiahealth-store
+          directory: .
