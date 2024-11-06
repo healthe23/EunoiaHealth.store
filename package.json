@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo 'No tests needed for this project.' || exit 0"
+    "test": "echo 'No tests needed for this project.' || exit 0",
+    "build": "your-build-command-here"  // Replace with your actual build command
   },
   "keywords": [],
   "author": "",
