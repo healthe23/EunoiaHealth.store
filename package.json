@@ -1,14 +1,11 @@
 {
-  "name": "eunoia-health-store",
+  "name": "eunoiahealth-store",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "EUNOIAHEALTH.STORE - Digital Products",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo 'No tests needed for this project.'",
-    "build": "echo 'Build completed'"
+    "test": "echo 'No tests needed for this project.' && exit 0"
   },
-  "keywords": [],
+  "keywords": ["health", "digital products", "ecommerce"],
   "author": "",
   "license": "ISC"
 }
