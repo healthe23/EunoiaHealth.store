@@ -3,25 +3,25 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches:
-      - main
+      - main  # This assumes you deploy from the main branch, adjust as needed
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4  # Update from v3 to v4
+      - name: Checkout repository  # Checks out your repository under $GITHUB_WORKSPACE
+        uses: actions/checkout@v4  # Changed to v4 for compatibility with Node.js 20
 
-      # If you need to build your site (for dynamic content or frameworks)
-      - name: Build the project
-        run: |
-          # Replace this comment with your actual build command if you're using a framework like React
-          echo "No build needed for static site" || exit 0  # For static sites with no build step
+      - name: Install Dependencies  # If your project uses any dependencies
+        run: npm ci  # Uses npm ci for clean install
+
+      - name: Build  # If you have a build step
+        run: npm run build  # Or whatever your build command is
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1  # Check if there's a v2 or later that supports Node.js 20
+        uses: cloudflare/pages-action@v1  # Check for updates to this version
         with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}  # Standardize to this name
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}  # Standardize to this name
-          projectName: your-project-name  # Replace with your actual project name
-          directory: ./  # or adjust to where your built files are
+          apiToken: ${{ secrets.CF_API_TOKEN }}  # Replace with your actual secret name if different
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}  # Replace with your actual secret name if different
+          projectName: your-project-name  # Replace with your Cloudflare Pages project name
+          directory: ./  # Replace with the path to your built files if not root
