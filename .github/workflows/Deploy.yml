@@ -20,10 +20,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build
-        run: |
-          echo "No build needed - static site"
-
+      # Removed the build step since it's a static site
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@1
         with:
