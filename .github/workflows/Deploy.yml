@@ -1,5 +1,5 @@
 name: Deploy to Cloudflare Pages
-.github/workflows/
+
 on:
   push:
     branches:
@@ -9,26 +9,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Build Project
-        run: npm install && npm run build
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@1.0.1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: your-project-name
-          directory: ./build
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
+
+      # If you need to build your site (for dynamic content or frameworks)
+      - name: Build the project
+        run: |
+          # Your build command here if needed, like npm run build for React, etc.
+          # If it's just static HTML, you might not need this step
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: healthE23
-          directory: ./public  # Ensure this is the correct build output directory
+          projectName: your-project-name  # Change this to your project name
+          directory: ./  # or ./public or wherever your index.html is after your build process
