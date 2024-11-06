@@ -1,4 +1,4 @@
-name: Eunoiahealth.store
+name: EUNOIAHEALTH.STORE
 
 on:
   push:
@@ -28,5 +28,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: eunoiahealth-store
+          projectName: EUNOIAHEALTH.STORE
           directory: .
