@@ -20,11 +20,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # Removed the build step since it's a static site
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: EUNOIAHEALTH.STORE
+          projectName: eunoiahealth-store
           directory: .
