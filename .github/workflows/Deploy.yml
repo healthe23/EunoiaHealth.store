@@ -10,18 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  # Update from v3 to v4
 
       # If you need to build your site (for dynamic content or frameworks)
       - name: Build the project
         run: |
-          # Your build command here if needed, like npm run build for React, etc.
-          # If it's just static HTML, you might not need this step
+          # Replace this comment with your actual build command if you're using a framework like React
+          echo "No build needed for static site" || exit 0  # For static sites with no build step
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/pages-action@v1  # Check if there's a v2 or later that supports Node.js 20
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: your-project-name  # Change this to your project name
-          directory: ./  # or ./public or wherever your index.html is after your build process
+          apiToken: ${{ secrets.CF_API_TOKEN }}  # Standardize to this name
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}  # Standardize to this name
+          projectName: your-project-name  # Replace with your actual project name
+          directory: ./  # or adjust to where your built files are
