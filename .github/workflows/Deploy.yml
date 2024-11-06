@@ -25,5 +25,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: e9e92812
+          projectName: 1d0fcb2
           directory: .
