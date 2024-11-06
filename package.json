@@ -2,10 +2,15 @@
   "name": "eunoiahealth-store",
   "version": "1.0.0",
   "description": "EUNOIAHEALTH.STORE - Digital Products",
+  "main": "index.js",  // Assuming your entry point is index.js, adjust if different
   "scripts": {
+    "start": "node index.js",  // Assuming you have a server file named index.js
+    "build": "echo 'Build completed.' && exit 0",  // Placeholder for build command
     "test": "echo 'No tests needed for this project.' && exit 0"
   },
   "keywords": ["health", "digital products", "ecommerce"],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {}
 }
