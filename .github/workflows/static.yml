@@ -9,32 +9,32 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'  # Updated to Node.js 20
+          node-version: '20'  # Using Node.js 20
 
       - name: Clear npm cache
         run: npm cache clean --force
 
       - name: Install Dependencies
-        run: npm install --production=false
+        run: npm install --omit=dev
 
       - name: Build
         run: |
           # Adjust the build command if needed
           # For static sites without build command: 
-          #   echo "No build needed"
-          # For Next.js with static export:
-          npm run build && npm run export
+          echo "No build needed"
+          # For projects requiring a build step:
+          # npm run build
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@1
+        uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: your-project-name  # Replace with your project name on Cloudflare Pages
-          directory: ./out  # Directory where your built files are, adjust as necessary
+          projectName: eunoiahealth-store  # Replace with your project name on Cloudflare Pages
+          directory: .  # Assuming static files are directly in the root, adjust if different
