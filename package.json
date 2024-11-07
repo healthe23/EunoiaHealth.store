@@ -6,16 +6,12 @@
   "scripts": {
     "start": "node index.js",
     "build": "echo 'Build completed.' && exit 0",
-    "test": "echo 'No tests needed for this project.' && exit 0"
+    "test": "echo 'No tests needed for this project.' && exit 0",
+    "export": "echo 'Export completed.' && exit 0"
   },
   "keywords": ["health", "digital products", "ecommerce"],
   "author": "",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {}
-}
-"scripts": {
-  "start": "node index.js",
-  "build": "echo 'Build completed.' && exit 0",
-  "export": "echo 'Export completed.' && exit 0"
 }
