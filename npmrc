@@ -1,0 +1,15 @@
+# Default public npm registry
+registry=https://registry.npmjs.org/
+
+# Uncomment the following lines if you need them for your project:
+# Enable legacy peer dependencies
+# legacy-peer-deps=true
+
+# Custom cache directory (if needed)
+# cache=/path/to/custom/cache
+
+# Strict SSL configuration
+# strict-ssl=true
+
+# Set default shell for scripts
+# script-shell=/bin/bash
