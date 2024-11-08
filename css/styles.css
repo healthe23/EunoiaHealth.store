@@ -6,19 +6,21 @@
 }
 
 :root {
-  /* Main Colors - Feel free to change these! */
-  --primary-color: #2563eb;    /* Blue */
-  --secondary-color: #4f46e5;  /* Indigo */
-  --accent-color: #06b6d4;     /* Cyan */
-  --text-color: #1f2937;       /* Dark Gray */
-  --light-bg: #f3f4f6;         /* Light Gray */
+  /* Main Colors for Telehealth company */
+  --primary-color: #34d399;    /* Green - Represents health and growth */
+  --secondary-color: #60a5fa;  /* Sky Blue - Suggests calmness and technology */
+  --accent-color: #6b7280;     /* Gray - Professionalism */
+  --text-color: #1f2937;       /* Dark Gray - Readability */
+  --light-bg: #f3f4f6;         /* Light Gray - Clean, clinical */
   --white: #ffffff;
+  --soft-blue: #e0f2fe; /* A lighter blue for backgrounds */
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
   color: var(--text-color);
+  background-color: var(--soft-blue); /* Softer background for health vibe */
 }
 
 /* Container */
@@ -27,13 +29,19 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  background-color: var(--white);
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Navigation */
+/* Navigation - Translucent for a modern, tech look */
 nav {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
   padding: 1rem 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensures it stays on top */
 }
 
 .nav-container {
@@ -42,57 +50,64 @@ nav {
   align-items: center;
 }
 
-/* Buttons */
+/* Buttons - More rounded for friendliness */
 .button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.375rem;
+  border-radius: 1rem;
   background-color: var(--primary-color);
   color: var(--white);
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .button:hover {
   background-color: var(--secondary-color);
+  transform: translateY(-2px);
 }
 
-/* Headers */
+/* Headers - A bit more spacious */
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 1rem;
-  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
+h1 { font-size: 2.5rem; font-weight: 700; }
+h2 { font-size: 2rem; font-weight: 600; }
 h3 { font-size: 1.75rem; }
 
-/* Product Cards */
+/* Product Cards - Health-themed background */
 .product-card {
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  padding: 1rem;
+  background: var(--white);
+  border: none;
+  border-radius: 1rem;
+  padding: 1.5rem;
   margin: 1rem 0;
-  transition: transform 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
-/* Grid Layout */
+/* Grid Layout - Adjusted for health focus */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   padding: 2rem 0;
+  background-color: var(--soft-blue);
 }
 
 /* Responsive Images */
 img {
   max-width: 100%;
   height: auto;
+  border-radius: 0.5rem;
 }
 
 /* Footer */
@@ -114,16 +129,19 @@ footer {
   }
 }
 
-/* Form Styles */
+/* Form Styles - Soft background for health feel */
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  background: var(--white);
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 input, textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.375rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.5rem;
   margin-top: 0.5rem;
 }
 
@@ -131,4 +149,39 @@ input, textarea {
 .text-center { text-align: center; }
 .mt-2 { margin-top: 2rem; }
 .mb-2 { margin-bottom: 2rem; }
-.p-2 { padding: 2rem; } 
+.p-2 { padding: 2rem; }
+
+/* Telehealth Specific Styles */
+.mission-statement {
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.mission-statement h2 {
+  color: var(--accent-color);
+}
+
+.values-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.values-list li {
+  background: var(--secondary-color);
+  color: var(--white);
+  padding: 1rem 2rem;
+  margin: 0.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.values-list li:hover {
+  transform: scale(1.05);
+}
